@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block css%}
+<style>
+    .list-container{
+        border-radius: 15px;
+        background: royalblue;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        margin: 20px 20px 20px 20px;
+        padding: 10px 10px 10px 10px;
+        align-items: center;
+        width: auto;
+    }
+    .list-item{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: purple;
+        border-radius: 15px;
+        margin: 20px;
+        padding: 0px 20px 20px 20px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    }
+</style>
+{% endblock %}
+
+{% block content%}
+<div class="list-container">
+    {% if lists %}
+        {% for list_item in lists %}
+            <div class="list-item">
+                <div style="width: 70%;">
+                    <h1 style="color: white;">{{ list_item.list_name }}</h5>
+                    <h7 style="color: white;"">{{ list_item.list_description }}</h7>
+                </div>
+                <p style="color: white; padding: 5px 0 0 0; font-size: larger;">{{ list_item.list_date }}</p>
+                <p style="color: white; padding: 5px 0 0 0; font-size: larger;">{{ list_item.list_time }}</p>
+                <a href="{% url 'core:edit_list_view' list_item.id%}" style="background: blue; color: white; border-radius: 15px; padding: 20px; text-decoration: none; margin-top: 5px;">Edit</a>
+                <a href="{% url 'core:done_view' list_item.id %}" style="background: red; color: white; border-radius: 15px; padding: 20px; text-decoration: none; margin-top: 5px;">Done</a>
+            </div>
+        {% endfor %}
+    {% else %}
+    <div>
+        <h2 style="color: white; text-align: center;">You don't have any activites for now. Create one by clicking the + button.</h2>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

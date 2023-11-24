@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Add new list{% endblock %}
+
+{% block css %}
+<style>
+    #list-form{
+        background: lightblue;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px;
+        width: auto;
+    }
+    #back-btn{
+        text-decoration: none;
+        color: red;
+        margin: 10px;
+        
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div id="list-form">
+        <h1 style="color: white;">Add new list</h1>
+        <form action="." method="post">
+            {% csrf_token %}
+            <p style="font: bold; color: white; font-size: larger;">List name</p> {{ form.list_name }}
+            <p style="font: bold; color: white; font-size: larger;">List description</p> {{ form.list_description}}
+            <p style="font: bold; color: white; font-size: larger;">Date</p> {{ form.list_date }}
+            <p style="font: bold; color: white; font-size: larger;">Time</p> {{ form.list_time }}
+            <button type="submit" value="" style="background-color: #0074e4; color: white; padding: 30px; border-radius: 20px; border: none; margin: 20px; font-size: larger;">Create List</button>
+        </form>
+        <a href="{% url 'core:index' %}" id="back-btn">Back to Home</a>
+    </div>
+{% endblock %}

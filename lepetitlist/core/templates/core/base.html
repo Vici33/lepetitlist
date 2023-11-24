@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Petit List | {% block title %}{% endblock %}</title>
+    <style>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px;
+            background-color: #0583D2;
+            border-radius: 15px;
+            margin: 30px 20px 0px 20px;
+        }
+        #logo {
+            font-size: 30px;
+            width: 70%;
+            color: #FFF;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .buttons{
+            margin-right: 30px;
+        }
+        .buttons a{
+            font-size: 25px;
+            font-weight: 400;
+            color: #FFF;
+            text-decoration: none;
+            margin-left: 40px;
+        }
+        .buttons a:hover{
+            color: #FFF;
+        }
+        #profile{
+            border-radius: 15px;
+            background-color: #c1c8e4;
+            color: white;
+            padding: 20px;
+        }
+        #profile:hover{
+            border-radius: 15px;
+            background-color: purple;
+            color: white;
+            padding: 20px;
+        }
+
+        footer {
+            width: auto;
+            display: flex;
+            background-color: #0583D2;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 20px 0px 20px;
+            justify-content: center;
+        }
+
+        footer::before,
+        footer::after {
+            content: "";
+            /* position: absolute; */
+            inset: 0;
+            background: #c1c8e4;
+            border-radius: inherit;
+            filter: blur(3.5rem);
+            }
+        footer p{
+            text-align: center;
+        }
+    </style>
+
+    {% block css %} 
+    {% endblock %}
+</head>
+<body>
+    <div class="header">
+        <a href="#" id="logo">Le Petit List</a>
+
+        <div class="buttons">
+            <a href="{% url 'core:add_list' %}" id="add-list">Add activites</a>
+
+            <a href="{% url 'core:create_user_view' %}" id="profile">Profile</a>
+        </div>
+    </div>
+
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <p style=color:white>&copy; Vici. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

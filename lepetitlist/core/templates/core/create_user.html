@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Petit List | Sign up</title>
+    <style>
+        #container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 10%;
+        }
+        #sign-up-box{
+            border-radius: 20px;
+            background-color: lightskyblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 style="color: blue;">Welcome to Le Petit List</h1>
+        <div id="sign-up-box">
+            <form action="." method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" value="" style="padding: 20px; border-radius: 20px; color: white; background-color: blue; font: bolder;">Sign up</button>        
+                {% if form.errors %}
+                    <ul>
+                        {% for error in form.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</body>
+</html>
